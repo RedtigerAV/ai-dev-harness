@@ -3,6 +3,8 @@
 Use the native plugin distribution. Registering a marketplace, copying its source
 or setting `enabled = true` does not establish that the package was installed.
 Check the install receipt and native skill loading separately from enablement.
+Use [installation-only verification](../VERIFY.md): entry probes must not continue
+into the target project's tests, builds, diagnostic scans or implementation.
 
 Project setup must preserve existing user choices. **An already installed and
 globally enabled Superpowers plugin stays globally enabled.** Reuse its actual

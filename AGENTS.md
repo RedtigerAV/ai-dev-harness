@@ -16,7 +16,10 @@ requirements are in `docs/product-requirements.md`.
 - Render a concise usage rule for every available installed skill into the managed
   project instructions. Community skills and MCP integrations are selected by their
   own task/context rules, independently of the active workflow.
-- Follow `docs/acceptance.md` for appropriate checks. Never label source research
-  or static checks as live client verification.
+- During installation/addition/update/repair/verification in a target project,
+  check only the AI environment. Do not run the target's tests, builds, lint/type
+  checks, scans, migrations or app startup commands without a separate explicit request.
+- For maintenance of this harness repository, follow `docs/acceptance.md` for
+  appropriate source checks. Never label static checks as live client verification.
 - Preserve normal platform and repository permissions; no additional blanket Git
   commit or push restrictions are introduced here.

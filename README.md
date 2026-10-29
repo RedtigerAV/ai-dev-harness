@@ -28,6 +28,8 @@ The conversation is short: inspect the project, check Superpowers, choose skills
 choose MCP tools, preview changes, install, and verify. Already approved choices
 do not need repeated confirmation. Global settings need separate explicit consent.
 Some plugin installs, authentication, or restarts require action in the client.
+Setup checks only the AI environment. It does not run your project's tests, builds,
+code scans or application startup commands; those require a separate explicit request.
 Superpowers uses its native plugin installer plus explicit project activation; an
 existing globally enabled copy stays enabled. See the
 [foundation setup guide](docs/superpowers.md) for new-install scope and verification.

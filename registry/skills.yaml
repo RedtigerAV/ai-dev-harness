@@ -142,7 +142,7 @@ components:
       discovery_command: npx react-doctor@latest install
       selection: Inspect current help and output scope; choose the target client's skill installation only.
     caveats: A successful CLI scan does not prove skill discovery. Do not install CI or autofix app code during setup. Upstream documents telemetry and its opt-out.
-    verify: Check the installed skill separately from a non-mutating diagnostic scan in the relevant app; report diagnostics without fixing them.
+    verify: Confirm native skill discovery and executable availability using a supported help/version command. Do not run a diagnostic scan of the target project during installation.
 
   - id: ui-ux-pro-max
     usage:

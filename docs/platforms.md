@@ -116,6 +116,9 @@ For Claude, [MCP documentation](https://code.claude.com/docs/en/mcp) describes
 `claude mcp add --scope project` and `.mcp.json`; the default CLI scope is not a
 substitute for choosing project scope. Use `/mcp` for connection/login checks.
 Configuration, authentication, and a successful capability call are separate checks.
+Apply VERIFY.md's installation-only boundary: verify connectors and their own
+runtimes, not the target project's builds/tests. Do not launch the application or
+its services merely to exercise runtime tools; report app-specific checks as untested.
 
 ## Optional capability check
 

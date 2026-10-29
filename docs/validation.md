@@ -105,7 +105,21 @@ was empty. No worktree, commit or push was created during review.
 +plugin installation, final per-context activation and entry invocation still need
 +their documented live checks. Manual copying is only a separately selected fallback.
 +
-+## Not exercised in a live target client
++## Installation verification boundary — 2026-10-29
+
+Installation, additions, updates, repair and environment verification now explicitly
+check only AI tooling and its configuration/resources/scopes/connectivity. Product
+tests, builds, lint/type checks, scans, migrations, dependency repair and application
+startup require a separate explicit request. Skill probes remain discovery/proposal-only.
+This does not change testing during separately requested development or learning work.
+
+Catalog probes were aligned: diagnostic tool availability replaces scanning the
+target project; browser connectors use inert pages; runtime connectors can pass a
+connector-level check with no running application. App diagnostics remain explicitly
+untested and are not an installation acceptance gate. The harness source checker
+and local links passed; no target-application validation was run for this change.
+
+## Not exercised in a live target client
 
 No real target project's settings, plugins, or credentials were changed during
 implementation. Native skill discovery in a fresh Codex/Claude session, marketplace

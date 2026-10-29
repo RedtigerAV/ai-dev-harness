@@ -27,7 +27,9 @@ Project choices and observations: `.ai-harness/installation.yaml`.
 {{project_paths_technologies_and_version_sources}}
 
 Install/add/update guidance: {{harness_source_url}} (INSTALL.md, LIFECYCLE.md,
-VERIFY.md). Preserve surrounding project instructions. Global changes need explicit
+VERIFY.md). Harness lifecycle tasks check only the AI environment; project tests,
+builds, scans and application startup require a separate explicit request.
+Preserve surrounding project instructions. Global changes need explicit
 consent. Existing team conventions and normal platform permissions still apply.
 <!-- AI DEV HARNESS:END -->
 

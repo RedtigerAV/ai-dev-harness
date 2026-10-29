@@ -30,7 +30,7 @@ components:
     prerequisites: Node compatible with the chosen Angular CLI; an Angular workspace for project tools.
     authentication: No service login for local workspace discovery.
     scope: Bind to the correct angular.json workspace; use distinct instance names for independent Angular workspaces when necessary.
-    caveats: Prefer the project's compatible local CLI and check mcp support. An older CLI may lack it; do not upgrade the app. Do not run migration or deploy tools during verification.
+    caveats: Prefer the project's compatible local CLI and check mcp support. An older CLI may lack it; do not upgrade the app or run build, test, migration, deploy or dev-server targets during installation verification.
     verify: Enumerate actual tools, request workspace/project information, and confirm returned paths belong to the intended Angular workspace.
 
   - id: next-devtools
@@ -47,7 +47,7 @@ components:
     authentication: No service login for local runtime diagnostics.
     scope: Discover servers, then explicitly select the intended app path and port for each call.
     caveats: Server startup and a stopped dev app are distinct states. Older Next.js apps cannot be promised the same runtime capability; offer supported documentation/browser alternatives without upgrading.
-    verify: Discover the intended running app and read its project metadata or errors. Tool discovery alone proves only the connector, not app diagnostics.
+    verify: Check MCP initialization, expected tools and harmless server discovery. No running app is a valid discovery result; record app diagnostics as untested without starting or building it. If already running, read only minimal metadata to confirm the target path.
 
   - id: playwright
     name: Playwright MCP
@@ -63,7 +63,7 @@ components:
     authentication: Browser/site authentication is separate from MCP startup; use only an approved test session.
     scope: Share the connector but select the target application's URL explicitly.
     caveats: Explain browser profile access; prefer an isolated test profile. Installing a server does not install the app's end-to-end test suite.
-    verify: Open an approved local test page and read its accessibility snapshot or title; avoid submitting forms or changing external data.
+    verify: Confirm MCP initialization and browser connection using a blank or inert test page and read its title/snapshot. Do not run target-application UI tests or start its server.
 
   - id: chrome-devtools
     name: Chrome DevTools MCP
@@ -79,7 +79,7 @@ components:
     authentication: Use an isolated approved test browser; attaching to a personal browser exposes its contents.
     scope: Select the intended local application page before inspecting console/network data.
     caveats: Check these optional telemetry/CrUX flags against the resolved version. Explain browser access and any requested data collection changes.
-    verify: Open a local test page, identify it, and read console or network information. Starting the MCP process alone does not test Chrome.
+    verify: Confirm MCP initialization and connection to an isolated browser using a blank or inert page; identify the page. Do not run application tests, inspect application errors or record performance traces during installation.
 
   - id: figma
     name: Figma MCP

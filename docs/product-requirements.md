@@ -538,6 +538,8 @@ Installing the harness must not automatically migrate dependency versions, refac
 
 The harness installs **AI development capabilities**, not changes to the product being developed.
 
+Installation, component addition, update, repair and verification check only that AI environment. Do not run the target project's tests, builds, lint/type checks, quality/security scans, benchmarks, migrations, dependency restore/repair or application startup commands as part of setup. Read-only inspection of manifests and declared scripts is allowed. Product validation requires a separate explicit user request.
+
 ---
 
 ## 13. Project instructions: AGENTS.md and CLAUDE.md
@@ -684,6 +686,10 @@ Updates should be understandable and repeatable without a bespoke migration engi
 The agent must validate the result of installation, component addition, or update and report problems honestly.
 
 ### 18.1 Verification expectations
+
+Verification is limited to the installed AI environment, not the application being developed. Native discovery, configuration, resources, activation scopes, authentication and harmless connector calls are in scope. Starting an MCP process is allowed; starting the target application or executing its validation is not authorized by harness setup.
+
+A healthy connector can pass installation verification without a running target app. Record app-specific diagnostics as untested without claiming they worked. Unrequested product validation is not an installation completion gate; a failed connector or missing required authorization still needs attention.
 
 Where reasonably possible, check that:
 
@@ -852,7 +858,7 @@ The initial release should be considered successful when the following outcomes 
 - [ ] The user can request an update and receive a clear preview of changes.
 - [ ] Optional global settings are explained and changed only after consent.
 - [ ] Failures, missing permissions, and manual authorization steps are reported with useful next actions.
-- [ ] Verification distinguishes configuration from actual operational readiness.
+- [ ] Verification distinguishes configuration from AI-tool readiness and never runs target-project validation without a separate explicit request; untested application diagnostics are reported separately.
 - [ ] The English README makes installation, usage, addition, updates, and troubleshooting understandable to a new user.
 
 ---

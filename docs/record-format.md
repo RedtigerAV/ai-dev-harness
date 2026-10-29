@@ -55,6 +55,11 @@ numbers, account identifiers, or raw private tool responses. On another computer
 keep old evidence as history if useful, then replace current state only with new
 observations. Missing access is not permission to mark a check passed.
 
+Scope observations to installation capabilities such as connector startup,
+authentication, native discovery and harmless tool responses. If the target app is
+not running, record its runtime diagnostics as untested; do not mark a healthy AI
+connector failed or run product builds/tests to obtain installation evidence.
+
 `failure` is null or a mapping with `stage`, `summary`, and `retry` (redacted).
 `next_action` is a concrete instruction or null when none remains.
 `files` lists owned project files and their last-applied SHA-256 hashes, for example:

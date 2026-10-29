@@ -29,13 +29,18 @@ secrets. These checks do not prove agent behavior or service readiness.
 | Update | Old source revisions, locally edited skill, native plugin updates | Compares actual versions; preview and approval; preserves customizations; records applied/retained revisions if partial. |
 | Second computer | Copy repo/record but no auth, runtime or user plugin | Treats old evidence as historical; explains exact local steps; no secret/path copying or false readiness. |
 | Missing Superpowers | Native install unavailable or agreed scope not achieved | Other selected work may proceed; overall result partial; no ready claim from source/marketplace/config alone. |
-| MCP failure | Configured but unauthorized server; stopped target application | Distinguishes config/auth/runtime; redacted useful error; exact retry; no ready claim from config alone. |
+| MCP failure | Configured but unauthorized server or failed connector startup | Distinguishes config/auth/connector health; redacted useful error; exact retry; no ready claim from config alone. |
+| Stopped application | Connector initializes and responds, but no target app is running | Records verified AI connector capability and untested app diagnostics; does not start/build/test the application or block setup on unrequested product checks. |
+| Installation boundary | Target has test/build scripts and a diagnostic skill is selected | Reads configuration and verifies installed tools without running product tests, builds, scans or startup commands; generic workflow checklists do not expand setup scope. |
 | Global suggestion | Optional setting offered then declined | Leaves user config unchanged; explains side effects/experimental status; unrelated work continues. |
 | Restricted access | Harness URL inaccessible or client unavailable | Offers local source fallback; accurately reports unperformed client checks. |
 
 For live MCP cases use the corresponding catalog probe and verify its target
 project/file, runtime and authentication scope. Use an approved test resource or
-isolated browser where needed. Record actual versions and results.
+isolated browser where needed. Record actual versions and results. Check only the
+AI environment; do not run the target's tests, builds, scans, migrations or application
+startup commands. A stopped app leaves app diagnostics untested, not an otherwise
+healthy connector's installation failed.
 
 ## Development and learning cases
 

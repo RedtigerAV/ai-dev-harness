@@ -4,6 +4,14 @@ For the existing Codex or Claude Code agent. Use native tools, ordinary file edi
 and documented upstream installers. No harness runtime is needed. For an existing
 installation, use [LIFECYCLE.md](LIFECYCLE.md).
 
+**Installation verifies only the AI environment.** Do not run the target project's
+tests, builds, lint/type checks, code-quality scans, benchmarks, migrations or
+application startup commands as part of setup. This also applies to additions,
+updates, repairs and verification-only requests. Read project manifests/configuration
+for recommendations, but do not execute their validation commands. Project checks
+require a separate explicit user request; a general workflow checklist does not
+expand the installation's scope. Follow [the verification boundary](VERIFY.md).
+
 ## 1. Establish source, target, and platform
 
 Read this file, [platform guidance](docs/platforms.md), both catalogs
@@ -35,7 +43,7 @@ assume the root manifest describes the entire repository. Include relevant ignor
 projects if the layout points to them; avoid unrelated checkouts.
 
 Produce a compact map: project path, languages/frameworks, declared/resolved versions,
-dependency/build tooling, test commands and applicable instructions. Declared ranges
+dependency/build tooling, declared test commands (read only) and applicable instructions. Declared ranges
 remain ranges; resolved versions require lockfiles or installed dependencies.
 Resolve shared dependencies for consuming projects. Do not fabricate recommendations
 for technologies absent from the catalog or change product dependencies during setup.
@@ -102,7 +110,8 @@ must not cancel unrelated local work.
   or a conflicting endpoint requires user resolution.
 - Merge only selected MCP entries into native config. Associate processes with the
   correct app directory. Reuse an equivalent connected plugin when appropriate.
-- Check prerequisites without upgrading app dependencies. Explain missing runtimes
+- Check tool prerequisites without running product validation or upgrading app
+  dependencies. Explain missing runtimes
   and record any necessary manual action.
 - Use native authentication or environment references. Never put tokens in shared
   config, the record, chat, or diagnostics.

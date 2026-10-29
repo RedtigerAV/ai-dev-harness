@@ -58,7 +58,8 @@ and offered for restoration; do not pretend their guidance ran.
 
 Check that every available selected skill/member has a rule in each effective
 instruction source. Then use a no-write task proposal for a relevant project and
-inspect whether the agent selects the expected skills. Repeat with Superpowers
+inspect whether the agent selects the expected skills. Keep the probe proposal-only;
+do not execute product tests, builds or diagnostics during installation. Repeat with Superpowers
 excluded to check that relevant community skills remain applicable. Also try an
 unrelated task or an explicit exclusion of the skill itself. Merely reading
 registry YAML does not prove either native discovery or actual invocation.

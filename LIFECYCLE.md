@@ -1,7 +1,10 @@
 # Add, update, and recover
 
 Use the same catalogs, platform adapters, safe merge procedure, and verification
-as [INSTALL.md](INSTALL.md). There is no separate migration system.
+as [INSTALL.md](INSTALL.md). There is no separate migration system. All lifecycle
+operations verify only the AI environment: do not run target-project tests, builds,
+scans or app startup commands. Product validation requires a separate explicit request;
+a connector's stopped target app is not a reason to expand the operation.
 
 ## Read the current state
 
