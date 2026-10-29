@@ -1,0 +1,203 @@
+# Catalog metadata, not executable commands or an installation record.
+schema_version: 1
+reviewed_on: '2026-10-29'
+components:
+  - id: superpowers
+    usage:
+      role: workflow
+      contexts: ["software-development"]
+      when: ["Normal feature development, debugging, testing and review within the active workflow."]
+      when_not: ["The user excludes Superpowers or requests work outside its documented scope."]
+      instruction: "Use Superpowers for ordinary development within its documented scope and respect explicit task exclusions."
+    name: Superpowers
+    kind: foundation
+    required: true
+    description: Standard engineering methodology from design and planning through implementation and verification.
+    recommend_for: [all-projects]
+    source: https://github.com/obra/superpowers
+    install:
+      method: native-plugin
+      guide: docs/platforms.md
+      selection: Required for a complete installation; installation scope still requires consent.
+    caveats: Use the current supported marketplace route for the active client and confirm its installation scope.
+    verify: Confirm the plugin and its actual skills are discoverable in the target client; check its workflow entry without starting feature implementation.
+
+  - id: learning-dev-workflow
+    usage:
+      role: workflow
+      contexts: ["guided-programming", "learning"]
+      when: ["The user requests a programming exercise, learner-led implementation, hints or review of that exercise."]
+      when_not: ["Ordinary implementation work without a learning request."]
+      instruction: "Use learning-dev-workflow for guided programming exercises and requested assistance or review; follow its own preparation and assistance-level rules."
+    name: learning-dev-workflow
+    kind: custom-skill
+    required: false
+    description: Prepare learning exercises, scaffolds and behavioral tests; provide requested hints and review while the learner implements.
+    recommend_for: [learning]
+    source: https://github.com/RedtigerAV/ai-dev-harness
+    install:
+      method: directory-copy
+      path: skills/learning-dev-workflow
+      selection: Optional, independent of framework.
+    caveats: Copy the complete directory and verify its resources, as for every custom skill; behavior and dependencies are defined in the skill itself.
+    verify: Confirm native discovery and complete resources; run the no-write probe appropriate to the skill definition.
+
+  - id: angular-developer
+    usage:
+      role: domain
+      contexts: ["angular"]
+      when: ["Implementing, debugging, testing or reviewing Angular code and architecture."]
+      when_not: ["Non-Angular work or creating a new application without a request to do so."]
+      instruction: "Use angular-developer for Angular development, debugging, testing and review in the target project; match its installed Angular version."
+    name: Angular Developer
+    kind: community-skill
+    required: false
+    description: Official Angular guidance for components, reactivity, forms, routing, and framework conventions.
+    recommend_for: [angular]
+    source: https://github.com/angular/skills
+    documentation: https://angular.dev/ai/agent-skills
+    install:
+      method: selected-upstream-skill
+      member_hint: angular-developer
+      selection: Discover the current member and install it for the selected client only.
+    caveats: Match advice to each application's installed Angular version; installation does not authorize dependency upgrades.
+    verify: Discover the installed skill and ask it for applicable version-aware guidance without changing app files.
+
+  - id: angular-new-app
+    usage:
+      role: domain
+      contexts: ["angular", "new-project"]
+      when: ["The user asks to create or scaffold a new Angular application."]
+      when_not: ["Harness installation, routine changes to an existing application, or unrequested project creation."]
+      instruction: "Use angular-new-app when the user requests creating a new Angular application; do not scaffold apps during harness setup."
+    name: Angular New App
+    kind: community-skill
+    required: false
+    description: Official guidance for creating and structuring a new Angular application with the Angular CLI.
+    recommend_for: [angular-new-project]
+    source: https://github.com/angular/skills
+    documentation: https://angular.dev/ai/agent-skills
+    install:
+      method: selected-upstream-skill
+      member_hint: angular-new-app
+      selection: Optional; select for new-application work.
+    caveats: Installing this skill does not authorize creating an application, installing an application CLI globally, or upgrading an existing project.
+    verify: Confirm native discovery and request a no-write new-application proposal; do not run scaffolding as an installation probe.
+
+  - id: react-best-practices
+    usage:
+      role: domain
+      contexts: ["react", "nextjs"]
+      when: ["Implementing, reviewing or optimizing React or Next.js code."]
+      when_not: ["Tasks outside React/Next.js or an explicit exclusion of this skill."]
+      instruction: "Use the installed React Best Practices skill for React/Next.js implementation, performance and review in matching projects."
+    name: React Best Practices
+    kind: community-skill
+    required: false
+    description: React and Next.js performance and engineering guidance.
+    recommend_for: [react, nextjs]
+    source: https://github.com/vercel-labs/agent-skills
+    install:
+      method: selected-upstream-skill
+      member_hint: react-best-practices
+      selection: Resolve the actual frontmatter name from the current upstream listing; folder and invocation names may differ.
+    caveats: Install only the selected member and its required resources.
+    verify: Confirm discovery under its actual name and applicability to the target React/Next.js version.
+
+  - id: vercel-composition-patterns
+    usage:
+      role: domain
+      contexts: ["react", "component-api-design"]
+      when: ["Designing or reviewing reusable React component APIs and composition patterns."]
+      when_not: ["Unrelated changes or refactoring component APIs without task scope."]
+      instruction: "Use the installed Composition Patterns skill for React component API design, reusable composition and related architecture review."
+    name: Vercel Composition Patterns
+    kind: community-skill
+    required: false
+    description: React component composition and maintainable component APIs.
+    recommend_for: [react-component-libraries, react-api-design]
+    source: https://github.com/vercel-labs/agent-skills
+    install:
+      method: selected-upstream-skill
+      member_hint: composition-patterns
+      selection: Resolve the current member's invocation name before installation.
+    caveats: Complement domain work; do not refactor components merely because the skill is installed.
+    verify: Confirm discovery and supporting references, then request read-only component API guidance.
+
+  - id: react-doctor
+    usage:
+      role: diagnostic
+      contexts: ["react", "nextjs", "code-quality-review"]
+      when: ["React diagnostics or review of correctness, architecture, maintainability or performance."]
+      when_not: ["Unrelated edits or automatic fixes not requested by the user."]
+      instruction: "Use react-doctor for requested or relevant React diagnostics and quality review; report findings and make fixes only within the requested scope."
+    name: React Doctor
+    kind: diagnostic-tool-and-skill
+    required: false
+    description: React diagnostics for correctness, performance, architecture, and maintainability.
+    recommend_for: [react-review, nextjs-review]
+    source: https://github.com/millionco/react-doctor
+    install:
+      method: upstream-tool
+      discovery_command: npx react-doctor@latest install
+      selection: Inspect current help and output scope; choose the target client's skill installation only.
+    caveats: A successful CLI scan does not prove skill discovery. Do not install CI or autofix app code during setup. Upstream documents telemetry and its opt-out.
+    verify: Check the installed skill separately from a non-mutating diagnostic scan in the relevant app; report diagnostics without fixing them.
+
+  - id: ui-ux-pro-max
+    usage:
+      role: domain
+      contexts: ["interface-design", "ux", "accessibility"]
+      when: ["Designing or reviewing visual interfaces, interaction patterns, typography or UX."]
+      when_not: ["Non-interface work or unrequested product-wide redesigns."]
+      instruction: "Use UI UX PRO MAX for interface design and UX work relevant to the request, following the installed skill and existing design conventions."
+    name: UI UX PRO MAX
+    kind: community-skill-with-assets
+    required: false
+    description: Interface design guidance covering visual styles, typography, accessibility, and UX.
+    recommend_for: [design-heavy-ui]
+    source: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+    install:
+      method: upstream-tool
+      discovery_command: npx ui-ux-pro-max-cli init --ai universal --dry-run
+      selection: Preview generated assets; use universal for Codex's .agents/skills or claude for Claude Code after checking current support.
+    caveats: Uses Python search resources; copying SKILL.md alone is insufficient. Current package is ui-ux-pro-max-cli, not the older uipro-cli. Avoid global npm installation by default.
+    verify: Confirm discovery and run the installed search helper on a generic sample query; check data and script references resolve.
+
+  - id: matt-pocock-skills
+    usage:
+      role: domain
+      contexts: ["selected-engineering-tasks"]
+      when: ["A selected member matches the task according to its own description."]
+      when_not: ["Unselected members or tasks outside the selected member's documented scope."]
+      instruction: "Resolve a specific when-to-use rule from each selected member and apply it only to matching tasks."
+    name: Matt Pocock Skills
+    kind: collection
+    required: false
+    description: Focused engineering, planning, testing, review, and teaching skills selected individually.
+    recommend_for: [optional-engineering-guidance]
+    source: https://github.com/mattpocock/skills
+    install:
+      method: selected-upstream-skill
+      selection: List current members and descriptions, obtain a specific subset, and review any required setup effects before installation.
+    caveats: Review required setup effects and resource dependencies for each selected member before installation.
+    verify: Verify each selected member by actual name and required resources; a collection is not one installed skill.
+
+  - id: addy-osmani-agent-skills
+    usage:
+      role: domain
+      contexts: ["selected-engineering-tasks"]
+      when: ["A selected architecture, security, documentation or quality member matches the task."]
+      when_not: ["Unselected members or tasks outside the selected member's documented scope."]
+      instruction: "Resolve each selected member's own trigger and project scope; use it for matching tasks."
+    name: Addy Osmani Agent Skills
+    kind: collection
+    required: false
+    description: Selective architecture, interface design, security, documentation, review, and quality guidance.
+    recommend_for: [optional-engineering-guidance]
+    source: https://github.com/addyosmani/agent-skills
+    install:
+      method: selected-upstream-skill
+      selection: List current members and their descriptions; obtain a specific subset relevant to the requested tasks.
+    caveats: Some members need shared checklists outside their directory. Resolve required resources and notices before copying.
+    verify: Check discovery of every selected member and every referenced shared resource; use a no-write probe suited to its own documented purpose.

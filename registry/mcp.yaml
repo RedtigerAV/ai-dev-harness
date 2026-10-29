@@ -1,0 +1,96 @@
+# Example launches must be checked and resolved to compatible versions at install time.
+# Never copy the entire catalog into client configuration.
+schema_version: 1
+reviewed_on: '2026-10-29'
+components:
+  - id: context7
+    name: Context7
+    required: false
+    description: Library documentation lookup for the version relevant to the task.
+    recommend_for: [library-documentation]
+    source: https://github.com/upstash/context7
+    transport: http
+    endpoint: https://mcp.context7.com/mcp
+    prerequisites: Network access; authentication and limits depend on the current service offering.
+    authentication: Use current client-supported authentication; upstream manual setup documents a bearer API key. Keep it in an environment/credential store, never the record.
+    scope: Shared repository integration; identify the application's dependency version in each query.
+    caveats: Use the documented MCP connection route and check for an equivalent existing configuration before adding one.
+    verify: Resolve a known public library and retrieve a small documentation result for the relevant API/version; a server listing alone is insufficient.
+
+  - id: angular-cli
+    name: Angular CLI MCP
+    required: false
+    description: Angular workspace information, documentation, and project tooling.
+    recommend_for: [angular]
+    source: https://angular.dev/ai/mcp
+    transport: stdio
+    launch:
+      command: npx
+      args: ['-y', '@angular/cli', mcp]
+    prerequisites: Node compatible with the chosen Angular CLI; an Angular workspace for project tools.
+    authentication: No service login for local workspace discovery.
+    scope: Bind to the correct angular.json workspace; use distinct instance names for independent Angular workspaces when necessary.
+    caveats: Prefer the project's compatible local CLI and check mcp support. An older CLI may lack it; do not upgrade the app. Do not run migration or deploy tools during verification.
+    verify: Enumerate actual tools, request workspace/project information, and confirm returned paths belong to the intended Angular workspace.
+
+  - id: next-devtools
+    name: Next.js DevTools MCP
+    required: false
+    description: Development-server diagnostics and metadata for Next.js applications.
+    recommend_for: [nextjs]
+    source: https://nextjs.org/docs/app/guides/mcp
+    transport: stdio
+    launch:
+      command: npx
+      args: ['-y', 'next-devtools-mcp@latest']
+    prerequisites: Compatible Node runtime; a running Next.js dev server for runtime tools. The built-in endpoint is available in Next.js 16 and later.
+    authentication: No service login for local runtime diagnostics.
+    scope: Discover servers, then explicitly select the intended app path and port for each call.
+    caveats: Server startup and a stopped dev app are distinct states. Older Next.js apps cannot be promised the same runtime capability; offer supported documentation/browser alternatives without upgrading.
+    verify: Discover the intended running app and read its project metadata or errors. Tool discovery alone proves only the connector, not app diagnostics.
+
+  - id: playwright
+    name: Playwright MCP
+    required: false
+    description: Browser interaction, accessible page inspection, and UI verification.
+    recommend_for: [browser-ui-testing]
+    source: https://github.com/microsoft/playwright-mcp
+    transport: stdio
+    launch:
+      command: npx
+      args: ['-y', '@playwright/mcp@latest']
+    prerequisites: Supported Node and a browser/runtime supported by the selected package version.
+    authentication: Browser/site authentication is separate from MCP startup; use only an approved test session.
+    scope: Share the connector but select the target application's URL explicitly.
+    caveats: Explain browser profile access; prefer an isolated test profile. Installing a server does not install the app's end-to-end test suite.
+    verify: Open an approved local test page and read its accessibility snapshot or title; avoid submitting forms or changing external data.
+
+  - id: chrome-devtools
+    name: Chrome DevTools MCP
+    required: false
+    description: Inspect browser console, network activity, and performance.
+    recommend_for: [browser-debugging, web-performance]
+    source: https://github.com/ChromeDevTools/chrome-devtools-mcp
+    transport: stdio
+    launch:
+      command: npx
+      args: ['-y', 'chrome-devtools-mcp@latest', '--no-usage-statistics', '--no-performance-crux']
+    prerequisites: Node meeting current upstream requirements, npm, and supported Chrome.
+    authentication: Use an isolated approved test browser; attaching to a personal browser exposes its contents.
+    scope: Select the intended local application page before inspecting console/network data.
+    caveats: Check these optional telemetry/CrUX flags against the resolved version. Explain browser access and any requested data collection changes.
+    verify: Open a local test page, identify it, and read console or network information. Starting the MCP process alone does not test Chrome.
+
+  - id: figma
+    name: Figma MCP
+    required: false
+    description: Read accessible design context and assets for implementation work.
+    recommend_for: [figma-design-input]
+    source: https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/
+    transport: http
+    endpoint: https://mcp.figma.com/mcp
+    prerequisites: Network, a compatible client, and access to the relevant Figma file; feature limits depend on the account.
+    authentication: Native OAuth login. Reuse an equivalent connected Figma plugin when available.
+    scope: Shared connection with per-file access checks.
+    caveats: A connected account may lack file access. Desktop-server setup is an upstream alternative with different local requirements; do not silently install both.
+    verify: Read minimal metadata or design context for a user-authorized file/node; no design write is needed. If no file is available, record authentication separately from untested design access.

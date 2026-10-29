@@ -1,0 +1,42 @@
+# Template: replace nulls with observations; remove unselected example instances.
+# Never save credentials. This is not evidence that anything is installed.
+schema_version: 1
+harness:
+  source: https://github.com/RedtigerAV/ai-dev-harness
+  revision: null
+  requested_revision: null
+platforms: [codex] # Replace with the requested platform(s).
+applications: [] # See docs/record-format.md for the application entry shape.
+choices:
+  selected: [superpowers]
+  declined: []
+components:
+  - id: superpowers
+    member: null
+    platform: codex
+    instance: default
+    app_paths: ['.']
+    source: https://github.com/obra/superpowers
+    resolved_revision: null
+    install_method: native-plugin
+    install_scope: null
+    location: null
+    ownership: harness
+    update_policy: platform-managed
+    usage_instruction: null # Fill from the resolved skill rule after discovery.
+    state: requested
+    last_successful_stage: null
+    observation:
+      checked_at: null
+      context: null
+      capability: null
+      evidence: []
+    next_action: Confirm scope and install or discover the required foundation.
+    failure: null
+    files: []
+instruction_files: []
+last_operation:
+  kind: install
+  at: null
+  result: partially_installed
+  summary: No installation or live verification has been performed from this template.
