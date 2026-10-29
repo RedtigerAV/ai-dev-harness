@@ -18,10 +18,13 @@ observations rather than assuming a fresh installation.
 ## Add components
 
 1. Consult the current catalog and re-detect relevant apps, including new manifests.
-2. Show relevant absent/declined components first, with name, source, purpose,
-   compatibility, scope, and current state. Offer the full catalog on request.
+2. When the user needs help choosing additions, follow INSTALL.md's full-catalog
+   presentation and native multi-select procedure: every custom/community skill,
+   then every MCP option, with individual descriptions and `(recommended)` labels.
+   Show existing/declined states; relevant absent options may appear first.
 3. Obtain the additional selection. A named-component request may already supply it;
-   clarify only its scope, ambiguous collection members, or unresolved conflicts.
+   do not reopen the catalog selection unnecessarily. Clarify only its scope,
+   ambiguous collection members, or unresolved conflicts.
 4. Preview changes. Install only the selected additions and necessary approved
    prerequisites. Do not upgrade or reinstall unrelated working components.
 5. Verify new capabilities and their task-time routing. Add a concise usage rule

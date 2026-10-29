@@ -11,6 +11,10 @@ requirements are in `docs/product-requirements.md`.
   enablement unchanged and still explicitly enable the same ID in the project;
   distinguish native installation, cache storage and activation scope.
 - Keep custom/personal skill installation generic; each skill defines its own behavior.
+- At component selection, display every custom/community skill and every MCP option
+  as individual bullets with names and useful descriptions. Mark recommendations
+  with `(recommended)` beside the name; recommendations never filter the catalog.
+  Use separate native multi-select panels for skills and MCP, each with all options.
 - Maintain catalogs against primary upstream documentation, including selection,
   compatibility, scope, task-time usage rules, and a meaningful verification probe.
 - Render a concise usage rule for every available installed skill into the managed

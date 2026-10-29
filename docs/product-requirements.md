@@ -162,9 +162,9 @@ The desired sequence is:
 1. **Read the harness instructions.** Determine whether the user is in Codex or Claude Code and identify the target repository.
 2. **Inspect the existing project.** Determine whether it is empty, an existing application, or a monorepo. Identify frameworks and relevant existing AI configuration.
 3. **Check Superpowers.** Install it using its supported distribution mechanism if possible; otherwise explain the exact manual steps. Superpowers is required for a complete installation.
-4. **Present custom and community skills.** Show the recommended selection first, with names and concise descriptions, and let the user choose which optional skills to install. Offer the full catalog on request.
+4. **Present custom and community skills.** Always show every custom and community catalog entry as an individual bullet with its name and useful description, including custom skills without a matching project context. Add `(recommended)` next to recommended names. Open a native multi-select panel with all optional entries and let the user choose several or none.
 5. **Install the selected skills.** Project-local installation is preferred where supported. Report conflicts or required manual steps.
-6. **Present MCP options.** Recommend the ones relevant to the detected project, provide names and descriptions, and let the user choose.
+6. **Present MCP options.** Always show every MCP catalog entry as an individual bullet with its name and useful description. Add `(recommended)` next to recommended names and open a separate native multi-select panel with all MCP options.
 7. **Configure the selected MCP integrations.** Handle permission or authentication requirements transparently. Do not report a server as working merely because a configuration entry exists.
 8. **Check optional platform capabilities.** Explain worthwhile settings for multi-agent or longer-running work. Ask before changing user/global settings.
 9. **Augment project instructions.** Add or update an identifiable `AI DEV HARNESS` section in the relevant existing project instruction files, preserving other content.
@@ -178,7 +178,7 @@ The agent should not silently install every optional component. A project-aware 
 - For an **empty/new project**, show the full set of available skill and MCP options, since there may be no reliable framework to infer yet. The user can select a future intended stack or defer tools.
 - For an **existing single-framework project**, surface the most relevant tools first.
 - For an **existing mixed-framework repository**, recommend tools for each detected application or framework.
-- Users must always be able to ask: **“Show me all available skills and MCP servers.”**
+- In every repository, show all available skills and MCP servers before selection without requiring a separate request. Recommendations affect labels and ordering, never visibility.
 - Existing tools, plugins, MCP servers, and project instructions must be recognized to avoid duplicate installation and conflicting definitions.
 
 ### 5.4 Installation is a guided task, not a black box
@@ -431,7 +431,7 @@ The harness must offer **custom skills** from its own repository and **community
 
 Include `learning-dev-workflow` in the initial catalog and make it straightforward to add more custom/personal skills.
 
-All selected custom skills follow the same complete-directory installation, resource verification, discovery and update process. Each skill defines its own behavior, modes and dependencies. The installer must not contain special branches keyed to one custom skill. Selection remains optional for every custom skill.
+All selected custom skills follow the same complete-directory installation, resource verification, discovery and update process. Each skill defines its own behavior, modes and dependencies. The installer must not contain special branches keyed to one custom skill. Selection remains optional for every custom skill. Always offer all custom skills, including `learning-dev-workflow`, during skill selection regardless of the detected stack or whether a learning task was requested. Future custom skills must appear through the same catalog-driven procedure.
 
 ### 10.2 Community skills to offer
 
@@ -455,13 +455,13 @@ The agent should suggest relevant items, not blindly install entire collections.
 
 For each option, show:
 
-- Name and a concise description.
-- Whether it is **required**, **recommended for the current project**, or **optional**.
+- Name and a useful description of its purpose and when it helps, in a separate bullet for each entry.
+- Whether it is **required**, **recommended for the current project**, or **optional**. Put the exact marker `(recommended)` beside recommended names; show the required foundation separately.
 - The frameworks or types of tasks for which it is relevant.
 - Its upstream source and any important installation or compatibility caveat.
 - Whether it is already installed.
 
-The user should be able to view the whole catalog, select several items, and decline others.
+Display the whole catalog before asking for a selection. Use native multi-select panels with every optional skill in the skill panel and every MCP integration in the MCP panel. The installing agent determines how to invoke the active client's supported multi-select interface. Do not substitute a three-option single-choice menu or recommended bundles for individual component choices. Recommendations do not authorize installation. Collections require a subsequent choice of individual members; selecting a collection does not select every member.
 
 ### 10.4 Skill selection during work
 
@@ -489,8 +489,8 @@ The MCP catalog must offer these integrations at minimum:
 MCP selection should follow the same user experience as skill selection:
 
 - Detect relevant frameworks and recommend matching tools.
-- Show names, descriptions, and availability/status.
-- Let the user choose from the recommended subset or request the full list.
+- Show every catalog entry as a separate bullet with its name, useful description, availability/status and `(recommended)` beside recommended names.
+- Open a native multi-select panel containing all MCP options; let the user choose several or none.
 - Explain authentication, local runtime requirements, and manual steps where needed.
 - Avoid duplicating already configured integrations.
 - Verify the available capability rather than assuming configuration implies connectivity.
@@ -642,8 +642,8 @@ The agent should:
 1. Read the project's existing installation record and relevant instructions.
 2. Consult the current harness catalog.
 3. Check which components are already available.
-4. Recommend components relevant to the current project and show the full list on request.
-5. Ask which additional components to install.
+4. Show every custom/community skill and MCP option with individual descriptions, existing states and `(recommended)` beside recommendations.
+5. Use separate native multi-select panels containing all skill and MCP options to choose additions. Honor a named-component request without reopening an already supplied selection.
 6. Install or guide installation of the chosen items.
 7. Verify them.
 8. Update the managed `AI DEV HARNESS` section and installation record.
@@ -824,7 +824,7 @@ The initial release should be considered successful when the following outcomes 
 - [ ] The user can start installation by providing the public GitHub repository URL to Codex or Claude Code.
 - [ ] The agent can explain and follow the repository's installation instructions without a proprietary CLI.
 - [ ] Superpowers has a verified native installation and explicit project enablement, preserving any pre-existing global choice; otherwise it is reported as a missing foundation.
-- [ ] Custom and community skills are offered with useful descriptions and project-aware recommendations.
+- [ ] All custom/community skills and MCP options are shown individually with useful descriptions, `(recommended)` beside recommendations, and separate native multi-select panels containing all options.
 - [ ] The user can view all available skills, select some, and decline others.
 - [ ] MCP options are presented similarly and verified honestly.
 - [ ] Existing `AGENTS.md` / `CLAUDE.md` content is preserved and a concise `AI DEV HARNESS` section includes a when-to-use rule for every available installed skill/member.

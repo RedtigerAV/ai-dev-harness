@@ -34,9 +34,13 @@ Superpowers uses its native plugin installer plus explicit project activation; a
 existing globally enabled copy stays enabled. See the
 [foundation setup guide](docs/superpowers.md) for new-install scope and verification.
 
-An empty project gets the full catalog and can defer technology choices. In a mixed
-repository, the agent inspects relevant applications, services, libraries and their
-versions, configures shared guidance once, and associates tools with their scopes.
+Every project gets the full skills catalog, including all custom/personal skills,
+then the full MCP catalog: individual bullets with names, useful descriptions and
+`(recommended)` beside matching options. Choose several items in separate native
+multi-select panels for skills and MCP. Recommendations never hide other options.
+An empty project can defer technology choices. In a mixed repository, the agent
+inspects relevant applications, services, libraries and their versions, configures
+shared guidance once, and associates tools with their scopes.
 Installing the harness does not upgrade dependencies or reorganize the project.
 
 ## Choose your tools

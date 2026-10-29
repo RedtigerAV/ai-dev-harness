@@ -26,6 +26,9 @@ For every skill, add `usage.role`, `contexts`, `when`, `when_not` and `instructi
 as defined in [skill routing](skill-usage.md). Recommendations help choose what to
 install; usage rules define when installed tools apply. New technology contexts
 do not require changing the installer or adding a fixed technology allowlist.
+Every new entry must automatically appear in the complete selection list and native
+multi-select panel. Include all custom skills even without a matching project
+technology; recommendation contexts control labels/order, not visibility.
 
 For collections, offer individual members, resolve their own usage rules, and check
 shared resources. For a tool-backed skill, distinguish tool installation from skill

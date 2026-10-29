@@ -18,13 +18,15 @@ secrets. These checks do not prove agent behavior or service readiness.
 | Case | Fixture and request | Observable acceptance |
 | --- | --- | --- |
 | Empty project | Git repo containing only README; install from URL | Reads INSTALL.md; shows full catalogs; asks selections/future stack; creates no app; no optional installs before selection. |
-| Existing project | Technology manifest, resolved-version evidence, team AGENTS.md | Recommends matching catalog entries; preserves instructions; checks compatibility without upgrades. |
+| Existing project | Technology manifest, resolved-version evidence, team AGENTS.md | Shows every custom/community skill and MCP option with individual descriptions; marks matching entries `(recommended)`; preserves instructions; checks compatibility without upgrades. |
 | Mixed independent projects | A UI, service and library using different technologies; separate manifests/lockfiles and sparse root metadata | Finds all projects; one root harness; per-project versions/paths; guidance and connections stay scoped correctly. |
 | Existing tools | Figma plugin and same-named community skill present | Checks identity/capability, adopts equivalent tools as external; asks about source conflict; avoids duplicates. |
 | Repeat | Install twice with unchanged selections | No duplicate blocks/skills/MCP entries; no unrelated changes or reinstall; respects declined choices. |
 | Instruction conflicts | CRLF file, team text, malformed/duplicate markers, locally edited managed block | Non-harness bytes preserved; ambiguous markers and local modifications cause a merge proposal, not deletion. |
 | Both clients | Existing CLAUDE.md imports AGENTS.md; select both clients | Avoids duplicate effective block; copies skill to native directories; separate readiness observations. |
-| Optional selection | Decline design/browser tools; choose one collection member | Installs only selection/resources; no full collection, deployment workflow or runtime dependency upgrade. |
+| Complete selection | Existing project with two matching domain skills; no learning request | Shows every custom skill, including learning-dev-workflow, and every community/MCP entry as separate bullets with names, useful descriptions and statuses; recommendation labels never filter options. |
+| Native multi-select | Choose multiple skills and multiple MCP integrations | Separate native multi-select panels contain all optional skills and all MCP options, with matching names/descriptions/recommendation labels; no three-bundle single-choice substitute. |
+| Optional selection | Decline design/browser tools; choose one collection member | Allows multiple selections or none; collection selection opens member choice; installs only selected members/resources, without a full collection, deployment workflow or runtime dependency upgrade. |
 | Add later | A new technology/project and previously declined matching tools; request one member | Installs only the requested addition, renders its usage rule, and preserves other versions/choices. |
 | Update | Old source revisions, locally edited skill, native plugin updates | Compares actual versions; preview and approval; preserves customizations; records applied/retained revisions if partial. |
 | Second computer | Copy repo/record but no auth, runtime or user plugin | Treats old evidence as historical; explains exact local steps; no secret/path copying or false readiness. |
@@ -64,9 +66,10 @@ healthy connector's installation failed.
   Superpowers excluded: the domain skill should still apply. Try an unrelated task
   and exclusion of the domain skill itself; do not force irrelevant activation.
 - In a disposable source fixture, add a second custom skill with a different name
-  and a supporting resource, plus its catalog path/usage. Confirm the generic setup
-  instructions cover copying, resource checks, discovery and rendering a rule
-  without installer/template edits for that name.
+  and a supporting resource, plus its catalog path/usage. Confirm it appears in
+  the full skill list and multi-select panel even for an unrelated project context.
+  Confirm the generic setup instructions cover copying, resource checks, discovery
+  and rendering a rule without installer/template edits for that name.
 - Reuse an existing globally enabled Superpowers plugin: user enablement stays true,
   while the same actual plugin ID gets explicit project enablement. Repeat for an
   existing user-disabled copy and verify that its user setting stays false.

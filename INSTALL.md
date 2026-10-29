@@ -75,21 +75,57 @@ alone installed the package or silently switch to a manually copied skill collec
 
 ## 4. Select skills, then MCP integrations
 
-Show the foundation separately. For each optional recommendation show name,
-description, app paths, source, installation form/caveat, and observed status.
-Label recommended versus optional explicitly. Offer the full catalog; in an empty
-project show all entries immediately and let the user choose a future stack or
-defer it. Do not create a starter app.
+### Show every catalog option
 
-For collections, enumerate current member names/descriptions and ask for a subset.
-A collection name is not permission to install every member. Check supporting
-resources before selecting isolated collection skills.
+Show the required foundation separately, with its observed state. Then present
+**every optional entry** from `registry/skills.yaml`, grouped into custom/personal
+skills and community skills/collections. Include every custom skill regardless of
+the detected technology or whether the user mentioned its task context. Read the
+catalog dynamically; do not maintain a name-specific shortlist in the installer.
 
-Obtain the skill selection, then present MCP options similarly. Honor explicit
-choices already made. Present one concise preview: components, target files,
-scopes, prerequisites, and manual actions. If that exact scope was already approved,
-proceed without another confirmation. Keep global changes separate; declining them
-must not cancel unrelated local work.
+For both empty and existing projects, show the full list immediately. Recommendations
+affect ordering and labels, never visibility. Keep unrelated, already installed,
+previously declined or currently incompatible options visible with their status;
+explain limitations instead of silently omitting them. In an empty project the user
+can choose a future stack or defer tools. Do not create a starter app.
+
+Use one bullet per entry, not one paragraph summarizing several components:
+
+- **{name}** (recommended) — {purpose and when it helps, in one or two sentences}.
+  ID: `{catalog-id}`. Applies to: {app paths/task context}.
+  Source: {upstream URL}. Status: {observed state}.
+  {Important installation, compatibility or scope caveat, if any}.
+
+Put the exact marker `(recommended)` next to the name only when supported by
+project evidence or the user's stated needs. Explain the reason briefly. Leave
+other options unmarked; a recommendation does not select or authorize installation.
+Keep names and IDs stable between the displayed list and the selection panel.
+
+### Collect multiple selections
+
+Open a **native multi-select panel containing all optional skills**, with one
+individually selectable option per catalog entry. Include names, useful descriptions
+and the same `(recommended)` labels. Use the active client's supported multi-select
+interface; the installing agent determines how to invoke it. Do not replace this
+with three single-choice bundles such as recommended/all/skip, or limit the panel
+to recommended entries. Let the user select several components or none.
+
+For a selected collection, enumerate its current member names/descriptions and use
+multi-select to choose individual members. Selecting a collection opens member
+selection; it is not permission to install every member. Check supporting resources
+before selecting isolated collection skills.
+
+After obtaining the skill selection, display **every entry** from `registry/mcp.yaml`
+with the same bullet format, statuses and recommendation labels. Open a separate
+native multi-select panel containing all MCP options. Explain important authentication,
+runtime and scope requirements before selection. Do not hide an integration merely
+because it is not recommended for the detected stack.
+
+Honor explicit choices already made; do not reopen selection for an already approved
+scope. Present one concise preview: selected components, target files, scopes,
+prerequisites, and manual actions. If that exact scope was already approved, proceed
+without another confirmation. Keep global changes separate; declining them must not
+cancel unrelated local work. Install only the selected optional components.
 
 ## 5. Install the agreed components
 
