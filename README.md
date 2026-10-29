@@ -120,8 +120,14 @@ Verify this project's AI Dev Harness on this computer. Explain what needs attent
 
 Use [LIFECYCLE.md](LIFECYCLE.md) for additions, updates and another computer;
 [VERIFY.md](VERIFY.md) for checks and troubleshooting. The project record at
-`.ai-harness/installation.yaml` tracks choices, origins, revisions and observations
+`.ai-dev-harness/installation.yaml` tracks choices, origins, revisions and observations
 without credentials. Recheck readiness in each environment.
+
+Existing `.ai-harness/installation.yaml` records are recognized and moved safely
+during an authorized install/add/update/repair using
+[record migration](docs/record-format.md#migrate-an-existing-record). The procedure
+preserves data, keeps a recoverable backup and stops on conflicting records;
+read-only checks leave files in place.
 
 Existing project instructions are preserved. Only a delimited **AI DEV HARNESS**
 section is managed. Incomplete setup is reported as **partially installed**.

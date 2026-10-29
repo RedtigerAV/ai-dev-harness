@@ -1,3 +1,5 @@
+# Destination: .ai-dev-harness/installation.yaml in the target repository.
+# Migrate an existing record using docs/record-format.md; never replace it with this template.
 # Template: replace nulls with observations; remove unselected example instances.
 # Never save credentials. This is not evidence that anything is installed.
 schema_version: 1

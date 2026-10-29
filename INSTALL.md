@@ -48,9 +48,11 @@ remain ranges; resolved versions require lockfiles or installed dependencies.
 Resolve shared dependencies for consuming projects. Do not fabricate recommendations
 for technologies absent from the catalog or change product dependencies during setup.
 
-Check `.ai-harness/installation.yaml`, native skill directories, plugin inventories,
-and MCP configuration/available tools. Identify components by source and capability
-as well as name: an existing Figma plugin may satisfy Figma MCP. Adopt matching
+Check `.ai-dev-harness/installation.yaml` and the legacy `.ai-harness/installation.yaml`
+before assuming this is a fresh installation. Follow [record migration](docs/record-format.md#migrate-an-existing-record)
+for relocation, duplicates or conflicts; preserve unknown fields and existing choices.
+Then check native skill directories, plugin inventories and MCP configuration/available
+tools. Identify components by source and capability as well as name: an existing Figma plugin may satisfy Figma MCP. Adopt matching
 components as externally owned instead of reinstalling them.
 
 ## 3. Check the required foundation
@@ -205,9 +207,11 @@ uses app paths instead of duplicating the harness per application.
 
 ## 7. Record, verify, and hand off
 
-Create or merge `.ai-harness/installation.yaml` using
+Create or merge `.ai-dev-harness/installation.yaml` using
 [the record template](templates/installation-record.yaml) and
-[record semantics](docs/record-format.md). Preserve unknown fields and unrelated
+[record semantics](docs/record-format.md). Complete any legacy record migration and
+reference updates before saving ordinary operation results; unresolved conflicts
+must not be overwritten by a fresh template. Preserve unknown fields and unrelated
 component records. Save partial progress and failures. Template examples are not
 discoveries.
 

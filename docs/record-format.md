@@ -1,10 +1,75 @@
 # Installation record, version 1
 
-The YAML at `.ai-harness/installation.yaml` is a small human-readable handoff, not
+The YAML at `.ai-dev-harness/installation.yaml` is a small human-readable handoff, not
 a runtime database. Start from [the template](../templates/installation-record.yaml).
 Paths below are relative to the target repository unless a scope explicitly differs.
 Quote dates and revisions. Use `null` for unknowns rather than invented values.
 Preserve unrecognized fields when editing a record from another harness version.
+
+## Migrate an existing record
+
+The canonical location is `.ai-dev-harness/installation.yaml`. The legacy location
+is `.ai-harness/installation.yaml`; recognize it for migration, not as a second
+active record. This is a path change, not a record-schema change: retain
+`schema_version: 1` and all existing data.
+
+Before installation, addition, update or repair writes, inspect **both locations**
+and include any required record/reference relocation in the operation's preview.
+A read-only verification or inventory request reads the existing record and reports
+the old location without moving, deleting or rewriting anything. An already
+authorized migration does not need another confirmation, except for unresolved
+conflicts. Do not treat a legacy record as a fresh installation or reinstall tools
+because the canonical file is absent.
+
+| Observed records | Action |
+| --- | --- |
+| Neither exists | Establish a record from observations at the canonical path; do not invent an earlier installation. |
+| Canonical only | Use it and leave unrelated legacy-directory contents alone. |
+| Legacy only | Preserve and relocate the record using the procedure below. |
+| Both, byte-identical | Use the canonical record; remove the duplicate legacy record only after the same backup, reference and preservation checks below. |
+| Both, different | Preserve both files and stop migration and record-dependent writes. Show a redacted conflict summary and a proposed reconciliation; obtain the user's resolution before applying it. Never choose by timestamp, overwrite one file or silently combine selections. |
+
+Unreadable files, invalid YAML, duplicate YAML keys, unsupported schemas or an
+unexpected file type/path require resolution before migration writes. Do not follow
+a symlink outside the target repository, overwrite a non-record file or replace a
+record with the template to recover from an error. Independent read-only inspection
+can continue while a conflict is unresolved.
+
+For a legacy-only record, or an identical duplicate:
+
+1. Save a recoverable byte-for-byte backup in a persistent, private location outside
+   version control, and retain its location for the handoff. Record the source hash and pre-existing Git
+   status without printing private record contents. Do not back up credential stores.
+2. Create the canonical directory if needed. If the canonical file is absent, copy
+   the record with a no-overwrite operation; do not move the whole directory or
+   reserialize YAML. Recheck for concurrent changes. If a destination appears or
+   the source changes, stop and reassess both records before writing or removing.
+3. Read back the canonical file and verify that its bytes/hash match the source
+   and backup. Parse it without losing comments, unknown fields, declined choices,
+   component identities, ownership, versions or observation history. Parsing is
+   a check, not an instruction to rewrite the record.
+4. Update harness-owned references in project instructions and recorded owned-path
+   fields to the canonical path. Follow INSTALL.md's managed-block/hash/conflict
+   rules, preserve surrounding bytes and unknown fields, and update managed hashes
+   after the approved edit. Do not globally replace text in product files or
+   unrelated user content. If a reference conflict remains, retain the legacy file
+   and backup, report the pending migration and defer ordinary record updates.
+5. Only after the copy and reference checks pass, recheck that the legacy file
+   still matches the preserved source and remove that file. Remove its directory
+   only if empty; preserve every other legacy file/subdirectory. Retain the backup.
+   Do not use recursive deletion or a forced overwrite.
+6. Continue the requested operation using only the canonical record. Preserve its
+   existing fields while saving actual operation results. Report the old/new paths,
+   backup location, migrated references and any remaining conflicts. A path migration
+   is not new evidence that a component is ready.
+
+For different records, reconcile into a reviewed canonical record while retaining
+recoverable originals of **both**. Preserve unknown fields and history from both;
+resolve conflicting values and selected/declined choices explicitly. Match component
+instances by `(id, member, platform, instance)`, not just by name. Remove the legacy
+record only after the agreed reconciliation and reference checks succeed. If the
+operation is interrupted, re-inspect both paths on retry; never assume cleanup ran.
+Repeating a completed migration must make no further changes.
 
 ## Identity and selections
 

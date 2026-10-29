@@ -2,7 +2,7 @@
 ## AI DEV HARNESS
 
 Source: {{harness_source_url}} at {{harness_revision}}.
-Project choices and observations: `.ai-harness/installation.yaml`.
+Project choices and observations: `.ai-dev-harness/installation.yaml`.
 
 - Standard development: {{superpowers_actual_state_and_invocation}}. Superpowers
   provides the normal engineering process; matching domain skills supply expertise.

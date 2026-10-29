@@ -1,16 +1,23 @@
 # Add, update, and recover
 
 Use the same catalogs, platform adapters, safe merge procedure, and verification
-as [INSTALL.md](INSTALL.md). There is no separate migration system. All lifecycle
-operations verify only the AI environment: do not run target-project tests, builds,
+as [INSTALL.md](INSTALL.md). Record relocation follows the documented file procedure,
+without a separate migration runtime. All lifecycle operations verify only the AI
+environment: do not run target-project tests, builds,
 scans or app startup commands. Product validation requires a separate explicit request;
 a connector's stopped target app is not a reason to expand the operation.
 
 ## Read the current state
 
-Read the installation record and effective project instructions, then inspect the
-actual skills, plugins, and MCP capabilities. The record is evidence of prior work,
-not authority to overwrite current files. Identify the source revision, installed
+Read `.ai-dev-harness/installation.yaml` and effective project instructions, then
+inspect the actual skills, plugins, and MCP capabilities. Also detect the legacy
+`.ai-harness/installation.yaml` and apply [record migration](docs/record-format.md#migrate-an-existing-record)
+before authorized lifecycle writes. Preserve the original record and unknown fields;
+do not treat the old path as an absent installation. Different records at both paths
+require explicit reconciliation, not overwrite or automatic selection by timestamp.
+Read-only verification reports migration needs without changing files.
+
+The record is evidence of prior work, not authority to overwrite current files. Identify the source revision, installed
 versions, selection choices, ownership, and any user customizations. No record?
 Inventory the existing setup, show what can be adopted, and establish a record from
 observations rather than assuming a fresh installation.

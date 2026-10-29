@@ -98,7 +98,7 @@ The first release should provide:
 5. A curated catalog of the maintainer's custom skills, recommended community skills, and MCP servers.
 6. Project-aware recommendations and conversational component selection.
 7. Safe augmentation of existing `AGENTS.md` and/or `CLAUDE.md` with an identifiable **AI DEV HARNESS** section.
-8. A project-level installation record at **`.ai-harness/installation.yaml`**.
+8. A project-level installation record at **`.ai-dev-harness/installation.yaml`**.
 9. Installation and verification behavior that is understandable, recoverable, and transparent about failures.
 10. Support for both new and existing repositories, including repositories with multiple applications, frameworks, and independent package manifests.
 11. A check of relevant Codex/Claude capabilities and optional guidance for useful settings, without silently changing global configuration.
@@ -168,7 +168,7 @@ The desired sequence is:
 7. **Configure the selected MCP integrations.** Handle permission or authentication requirements transparently. Do not report a server as working merely because a configuration entry exists.
 8. **Check optional platform capabilities.** Explain worthwhile settings for multi-agent or longer-running work. Ask before changing user/global settings.
 9. **Augment project instructions.** Add or update an identifiable `AI DEV HARNESS` section in the relevant existing project instruction files, preserving other content.
-10. **Record the installation.** Store the selected components and their state in `.ai-harness/installation.yaml`.
+10. **Record the installation.** Store the selected components and their state in `.ai-dev-harness/installation.yaml`.
 11. **Verify and report.** Confirm what is installed, what is operational, what requires a restart or manual action, and what failed.
 
 The agent should not silently install every optional component. A project-aware recommendation is a starting point for user choice, not a command to install everything.
@@ -582,7 +582,19 @@ The installer must respect existing root-level and nested project instructions, 
 
 Maintain a lightweight project installation record at:
 
-**`.ai-harness/installation.yaml`**
+**`.ai-dev-harness/installation.yaml`**
+
+Recognize the legacy `.ai-harness/installation.yaml` during installation and lifecycle
+operations. Before authorized writes, relocate it without changing its bytes/schema,
+retain a recoverable backup and all unknown fields, choices and history, and update
+harness-owned references using managed-instruction preservation rules. Verify the
+canonical copy before removing the old record; leave unrelated old-directory files
+untouched. If both records exist and differ, preserve both and require explicit
+reconciliation rather than choosing by timestamp or overwriting. Identical copies
+can be deduplicated after backup and preservation checks. Interrupted migrations
+must be recoverable and retries idempotent. Read-only verification detects and
+reports legacy records without moving or modifying them. A renamed record must
+not cause reinstallation or be mistaken for fresh readiness evidence.
 
 Its purpose is to make later installation, verification, addition, and update conversations aware of the project's current harness setup.
 
@@ -828,7 +840,7 @@ The initial release should be considered successful when the following outcomes 
 - [ ] The user can view all available skills, select some, and decline others.
 - [ ] MCP options are presented similarly and verified honestly.
 - [ ] Existing `AGENTS.md` / `CLAUDE.md` content is preserved and a concise `AI DEV HARNESS` section includes a when-to-use rule for every available installed skill/member.
-- [ ] `.ai-harness/installation.yaml` reflects the actual installation and contains no secrets.
+- [ ] `.ai-dev-harness/installation.yaml` reflects the actual installation and contains no secrets.
 - [ ] Repeating installation does not create duplicate managed sections or component installations.
 - [ ] The installation works sensibly in an empty project, a populated project, and a mixed-framework repository.
 

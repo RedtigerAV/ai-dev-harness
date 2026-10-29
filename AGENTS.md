@@ -10,6 +10,9 @@ requirements are in `docs/product-requirements.md`.
   a competing production workflow or harness CLI. Reuse existing Superpowers global
   enablement unchanged and still explicitly enable the same ID in the project;
   distinguish native installation, cache storage and activation scope.
+- Store project installation records at `.ai-dev-harness/installation.yaml`.
+  Recognize legacy `.ai-harness/installation.yaml` and follow docs/record-format.md
+  for lossless migration before lifecycle writes; read-only checks never migrate.
 - Keep custom/personal skill installation generic; each skill defines its own behavior.
 - At component selection, display every custom/community skill and every MCP option
   as individual bullets with names and useful descriptions. Mark recommendations

@@ -2,7 +2,12 @@
 
 Verify on the actual computer, in each requested client, from the intended project.
 Do not install missing components during a read-only verification request. Report
-findings and offer the documented repair route.
+findings and offer the documented repair route. Inspect the canonical record at
+`.ai-dev-harness/installation.yaml` and recognize the legacy `.ai-harness/installation.yaml`.
+Follow [record migration checks](docs/record-format.md#migrate-an-existing-record);
+report required migration or conflicting records without modifying them during
+read-only verification. Record relocation is AI metadata maintenance, separate
+from the prohibited target-application/database migrations below.
 
 ## Installation-only boundary
 
@@ -89,8 +94,12 @@ success. `ready` is scoped to the verified capability, client, and app, not fore
    correct component names/states, and unchanged non-harness bytes compared with the
    saved before-image. Check nested overrides/imports from the actual app context.
 6. **Record:** validate YAML, unique instance identities, revisions, ownership,
-   selections, paths, states, and evidence. Resolve template placeholders. Check
-   that no credential values or private diagnostic payloads were saved.
+   selections, paths, states, and evidence. After an authorized legacy migration,
+   check preserved source bytes/backup, reference updates, unchanged unrelated
+   legacy files and absence of a second active record. Unresolved migration
+   conflicts remain pending and must not be reported as complete. Resolve template
+   placeholders. Check that no credential values or private diagnostic payloads
+   were saved.
 7. **Diff:** confirm no unexpected app dependency upgrades, source edits, or unrelated
    configuration changes. Save only accurate results, including partial failures.
 
