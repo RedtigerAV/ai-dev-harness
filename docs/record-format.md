@@ -28,10 +28,20 @@ entry for each client and each distinct workspace binding. `app_paths` lists the
 applications that instance serves; one shared instance may cover several apps.
 
 Record the source, actual member name, resolved revision/package version, install
-method, scope (`project`, `user`, `account`, or `external`), and location/native
+method, scope (`project`, repository-private `local`, `user`, `account`, or `external`), and location/native
 plugin identifier. Record `ownership: external` when adopting an existing tool;
 this does not grant permission to update or remove it. `update_policy` describes
 pinning or native automatic updates.
+
+For a native Superpowers plugin, keep its exact plugin ID, receipt and version.
+Distinguish native `install_scope`/cache location from `activation_scope`: a newly
+installed plugin can live in the shared client cache while enabled only for the
+project. Record `project_enabled`, `user_enabled_before` and `user_enabled_after`.
+Preserve pre-existing user choices. Use `activation_scope: inherited-user` when an
+existing globally enabled copy is reused, rather than falsely claiming isolation;
+use `project` for a verified new project-only activation. Unset/unknown values are
+null and must not be treated as evidence of false/disabled. A manually chosen
+`project-native-skills` fallback has its own member/file inventory and no plugin receipt.
 
 For skills, retain the resolved `usage_instruction` used in project instructions
 and the actual member name/context, especially for collections. It summarizes when

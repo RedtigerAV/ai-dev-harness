@@ -12,7 +12,7 @@ Use these states in [the installation record](docs/record-format.md):
 | --- | --- |
 | `requested` | Selected; no successful setup evidence yet |
 | `configured` | Native configuration is present and parseable; connection unproven |
-| `installed` | Skill/plugin/package files are present; client discovery/use unproven |
+| `installed` | Skill files are copied or native package installation is confirmed; client loading/use unproven |
 | `ready` | Required capability succeeded in the named client/context during this check |
 | `requires_manual_action` | Known login, trust, restart, prerequisite, or user action remains |
 | `failed` | An attempted operation/check failed; include stage and redacted summary |
@@ -24,9 +24,12 @@ success. `ready` is scoped to the verified capability, client, and app, not fore
 
 ## Checks
 
-1. **Foundation:** inspect the native plugin inventory and currently discoverable
-   Superpowers skills. Confirm the entry can be loaded without running a feature
-   implementation. Files, an install receipt, or a README alone are not readiness.
+1. **Foundation:** follow [installation and activation checks](docs/superpowers.md).
+   Require an actual native receipt, exact plugin ID, effective project enablement
+   and loaded skills/entry. Preserve pre-existing global enablement; new project-only
+   activations must remain disabled outside the project. Verify any manual skill-copy
+   fallback according to its distinct distribution; never call it an installed plugin.
+   Source copies, marketplace availability and enabled flags alone are insufficient.
 2. **Selected skills:** verify name/description and the complete resource directory;
    use native discovery and a no-write invocation where possible. Verify collection
    members individually. Use the skill's own instructions and catalog probe to
@@ -74,7 +77,7 @@ failure. Distinguish a connector-only success from untested app/file access.
 | Symptom | Check and next step |
 | --- | --- |
 | Source URL unavailable | Report access failure; use a local checkout or supplied docs/catalogs at a known revision. |
-| Superpowers missing from the marketplace | Check installed client and current upstream route in `docs/platforms.md`; give supported manual steps. Keep overall result partial. |
+| Superpowers source/config exists but no skills load | Follow `docs/superpowers.md`: check the real native install receipt, exact ID and activation scope; preserve existing global choices and keep setup partial until loading works. |
 | Skill files exist but no skill appears | Check the client's effective project path, native directory, frontmatter, complete resources, same-name collisions, and reload/restart guidance. |
 | MCP config exists but tools do not | Check parse errors, project trust, native enablement, runtime PATH, stderr, and restart requirements. A GUI app may inherit a different PATH. |
 | Unauthorized / forbidden | Use the service's native login flow; check account/file access. Keep credentials out of diagnostics. A valid login is not file permission. |

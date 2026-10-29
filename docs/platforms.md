@@ -31,20 +31,21 @@ import unless its broader effects are understood and approved.
 
 ## Superpowers
 
-Follow [Superpowers upstream](https://github.com/obra/superpowers):
+Follow [Superpowers upstream](https://github.com/obra/superpowers) and the concrete
+[native install and project activation procedure](superpowers.md).
 
-- **Codex app:** open **Plugins**, find **Superpowers** in Coding, click **+**, and
-  follow the install prompts. If agent-driven plugin installation is available,
-  use it with the user's approved scope. Otherwise leave this as an explicit UI step.
-- **Codex CLI:** use `/plugins`, search for Superpowers, and choose **Install Plugin**.
-- **Claude Code:** the official marketplace route is
-  `/plugin install superpowers@claude-plugins-official`. Inspect the current plugin
-  manager's scope options; select project scope if supported and suitable. Any
-  user/account-level installation needs explicit consent.
+- **Codex:** use the native plugin installer when the package is missing; then
+  explicitly enable the actual installed plugin ID in the trusted project's config.
+  Preserve existing user enablement. A new installation with no previous user choice
+  ends user-disabled/project-enabled, with consent for any user-config write.
+- **Claude Code:** use
+  `claude plugin install superpowers@claude-plugins-official --scope project` from
+  the target root, or adopt an existing package and explicitly enable it for the
+  project. Preserve any existing global choice.
 
-If the marketplace is absent, consult the current upstream instructions for the
-installed client version and report any installation limitation.
-After installation/restart, confirm discovery of the plugin's current skills.
+Source copying, marketplace discovery and enablement are separate from actual
+native installation and loading. Shared client caches are acceptable. Manual skill
+copying is a separately chosen fallback, not the default plugin distribution.
 
 ## Optional community skills
 

@@ -80,7 +80,32 @@ exclusion-list fixtures produce the expected validator results.
 All review edits were made directly on `main`; HEAD remained unchanged and staging
 was empty. No worktree, commit or push was created during review.
 
-## Not exercised in a live target client
+## Superpowers installation correction — 2026-10-29
++
++A real installation exposed a missing step: a local source/marketplace and an
++enabled project flag were present, while native inventory still reported
++`installed: false` and no foundation skills loaded. The instructions now require
++native installation separately from activation and loaded-skill verification.
++
++The primary route remains the native plugin distribution. Existing global
++enablement is preserved, with the same actual plugin ID explicitly enabled in
++the project. A new installation without prior user preference ends user-disabled
++and project-enabled after preview/consent for any user-config writes. Claude uses
++explicit project scope. Shared caches are distinguished from activation scope.
++
++The Codex native CLI help and official installation/configuration documentation
++were inspected. YAML, local links and the new JSON/TOML examples passed checks.
++As research for the optional skill-copy fallback, Codex 0.165.0-alpha.1.2 native
++`skills/list` discovered all 15 enabled repo-scoped Superpowers 7.0.1 skills in a
++temporary target and none of those project copies in a separate context. The
++user config hash stayed unchanged. That probe did not install a plugin or invoke
++its workflow; it is not evidence of a completed native plugin installation.
++
++No target-project or user enablement was changed during this correction. Actual
++plugin installation, final per-context activation and entry invocation still need
++their documented live checks. Manual copying is only a separately selected fallback.
++
++## Not exercised in a live target client
 
 No real target project's settings, plugins, or credentials were changed during
 implementation. Native skill discovery in a fresh Codex/Claude session, marketplace

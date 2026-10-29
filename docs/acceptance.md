@@ -28,7 +28,7 @@ secrets. These checks do not prove agent behavior or service readiness.
 | Add later | A new technology/project and previously declined matching tools; request one member | Installs only the requested addition, renders its usage rule, and preserves other versions/choices. |
 | Update | Old source revisions, locally edited skill, native plugin updates | Compares actual versions; preview and approval; preserves customizations; records applied/retained revisions if partial. |
 | Second computer | Copy repo/record but no auth, runtime or user plugin | Treats old evidence as historical; explains exact local steps; no secret/path copying or false readiness. |
-| Missing Superpowers | Plugin install unavailable or user declines its scope | Other selected work may proceed; overall result partial; supported restoration steps. |
+| Missing Superpowers | Native install unavailable or agreed scope not achieved | Other selected work may proceed; overall result partial; no ready claim from source/marketplace/config alone. |
 | MCP failure | Configured but unauthorized server; stopped target application | Distinguishes config/auth/runtime; redacted useful error; exact retry; no ready claim from config alone. |
 | Global suggestion | Optional setting offered then declined | Leaves user config unchanged; explains side effects/experimental status; unrelated work continues. |
 | Restricted access | Harness URL inaccessible or client unavailable | Offers local source fallback; accurately reports unperformed client checks. |
@@ -62,6 +62,15 @@ isolated browser where needed. Record actual versions and results.
   and a supporting resource, plus its catalog path/usage. Confirm the generic setup
   instructions cover copying, resource checks, discovery and rendering a rule
   without installer/template edits for that name.
+- Reuse an existing globally enabled Superpowers plugin: user enablement stays true,
+  while the same actual plugin ID gets explicit project enablement. Repeat for an
+  existing user-disabled copy and verify that its user setting stays false.
+- For a new plugin with no prior user choice, require an actual native receipt,
+  final user-disabled/project-enabled state and native entry loading; an unrelated
+  project must not gain activation. Preview all user-config writes before installing.
+- A source-only marketplace with `installed: false` stays pending even if its
+  project flag is true. Manual skill copying is offered only as a distinct chosen
+  fallback, not silently substituted for the native plugin.
 - For the catalog's new-app skill, verify discovery/proposal only during setup;
   scaffolding is triggered by a separate user request to create an application.
 

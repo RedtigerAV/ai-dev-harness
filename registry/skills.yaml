@@ -17,10 +17,10 @@ components:
     source: https://github.com/obra/superpowers
     install:
       method: native-plugin
-      guide: docs/platforms.md
-      selection: Required for a complete installation; installation scope still requires consent.
-    caveats: Use the current supported marketplace route for the active client and confirm its installation scope.
-    verify: Confirm the plugin and its actual skills are discoverable in the target client; check its workflow entry without starting feature implementation.
+      guide: docs/superpowers.md
+      selection: Reuse or natively install the foundation and explicitly enable it for this project; preserve pre-existing global enablement and preview any user-config change.
+    caveats: Source copies and enabled flags do not prove installation. New installs default to project-only activation; existing global choices stay unchanged. Manually copied skills require a separately chosen fallback.
+    verify: Require the actual native install receipt, the same plugin ID in effective project configuration, preserved/agreed user enablement, and native entry loading. Check outside-project isolation only for a new project-only activation.
 
   - id: learning-dev-workflow
     usage:

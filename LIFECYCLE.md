@@ -26,7 +26,10 @@ observations rather than assuming a fresh installation.
    records. Preserve versions and usage rules of components not changed.
 
 If Superpowers is missing, report the incomplete foundation and offer repair. A
-request to add Context7 alone does not authorize a global Superpowers installation.
+request to add Context7 alone does not authorize reinstalling the foundation.
+Repair it through [native installation and project activation](docs/superpowers.md),
+preserving existing global choices. A marketplace/source-only setup still needs
+the actual native install; do not repair it merely by adding another enabled flag.
 
 ## Update
 
@@ -44,7 +47,9 @@ request to add Context7 alone does not authorize a global Superpowers installati
 5. Update approved components through their recorded installation route. For a
    customized skill, offer keeping the local copy, manually merging, or an explicitly
    approved replacement with recovery available. Do not use a global “update all”
-   command for a subset. Preview changes to shared user-level plugins across projects.
+   command for a subset. Preserve the recorded foundation identity and activation
+   choices, including inherited global enablement. Recheck user/project values after
+   native updates; do not silently change activation for other projects.
 6. Recheck usage rules against each updated skill's own description. Preview and
    merge the resulting rules with the managed instruction blocks using INSTALL.md's
    marker/conflict rules. Preserve unrelated settings, authentication references,

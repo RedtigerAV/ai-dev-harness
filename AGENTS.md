@@ -7,7 +7,9 @@ requirements are in `docs/product-requirements.md`.
   and target paths distinct. Developing the harness does not install it here.
 - Keep repository content in English. Match the user's conversation language.
 - Keep Superpowers as the required ordinary-development foundation; do not build
-  a competing production workflow or harness CLI.
+  a competing production workflow or harness CLI. Reuse existing Superpowers global
+  enablement unchanged and still explicitly enable the same ID in the project;
+  distinguish native installation, cache storage and activation scope.
 - Keep custom/personal skill installation generic; each skill defines its own behavior.
 - Maintain catalogs against primary upstream documentation, including selection,
   compatibility, scope, task-time usage rules, and a meaningful verification probe.

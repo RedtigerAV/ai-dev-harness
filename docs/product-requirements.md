@@ -195,7 +195,11 @@ If the installation only partially succeeds, the final result must say **partial
 
 Superpowers must be installed or its absence must be clearly reported as blocking a **complete** harness installation.
 
-The agent should prefer the currently supported, official installation route for the active platform. If installation cannot be completed automatically, it should provide clear, up-to-date manual instructions and verify afterward where possible.
+Use the currently supported native plugin installer and explicitly enable the same actual plugin ID in the project's configuration. Copying source or declaring a marketplace is not a completed native install. Shared client caches are acceptable; storage location and activation scope are separate.
+
+Preserve existing global enablement when reusing an already-installed Superpowers plugin, while still recording explicit project enablement. For a new installation without a pre-existing user choice, use project-only activation and obtain consent for any user-config changes required by the native installer. Do not globally disable an existing installation to satisfy a local setup request. A manual skill-copy distribution is only an explicitly selected fallback with separately verified capabilities, not the default plugin installation.
+
+If native installation or the agreed scope cannot be completed, report an incomplete installation and give supported next steps; do not infer success from source files, enabled flags or a restart alone.
 
 ### 6.2 Ordinary software development
 
@@ -813,7 +817,7 @@ The initial release should be considered successful when the following outcomes 
 
 - [ ] The user can start installation by providing the public GitHub repository URL to Codex or Claude Code.
 - [ ] The agent can explain and follow the repository's installation instructions without a proprietary CLI.
-- [ ] Superpowers is installed or clearly identified as a blocking missing requirement.
+- [ ] Superpowers has a verified native installation and explicit project enablement, preserving any pre-existing global choice; otherwise it is reported as a missing foundation.
 - [ ] Custom and community skills are offered with useful descriptions and project-aware recommendations.
 - [ ] The user can view all available skills, select some, and decline others.
 - [ ] MCP options are presented similarly and verified honestly.

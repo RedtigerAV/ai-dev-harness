@@ -47,15 +47,23 @@ components as externally owned instead of reinstalling them.
 
 ## 3. Check the required foundation
 
-Inspect whether Superpowers is visible to the active client. Follow the current
-upstream route in [platform guidance](docs/platforms.md). Preview scope and required
-permissions. An account/user-level plugin needs explicit consent for that scope
-even though the foundation is required.
+Inspect native installation, source identity and existing user/project enablement
+separately. Follow [native installation and project activation](docs/superpowers.md),
+including its before/after scope table. Reuse matching installed Superpowers rather
+than duplicating it under another marketplace ID.
 
-If installation needs UI action, provide exact steps, record `requires_manual_action`,
-and continue independent selected setup. Refusal or failure leaves the harness
-incomplete; it does not authorize another global route. Reading documentation
-does not install Superpowers.
+Preserve pre-existing global enablement. Even when it is already globally enabled,
+explicitly enable the same plugin ID in the project config. For a new install with
+no prior user choice, complete the native package installation and make its final
+activation project-only. Preview and obtain consent for user-config changes made
+by the native installer or the required default-false setting; never disable an
+existing global installation as a shortcut. Use explicit project scope in Claude.
+
+Copying source, declaring a marketplace and setting an enabled flag are not a native
+installation. If install/reload/permission actions remain, give exact supported next
+steps, record `requires_manual_action`, and continue independent selected setup.
+Refusal or failure leaves the foundation incomplete; do not claim that reloading
+alone installed the package or silently switch to a manually copied skill collection.
 
 ## 4. Select skills, then MCP integrations
 

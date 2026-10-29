@@ -19,10 +19,14 @@ components:
     source: https://github.com/obra/superpowers
     resolved_revision: null
     install_method: native-plugin
-    install_scope: null
+    install_scope: null # Native installer/cache scope, not necessarily activation scope.
+    activation_scope: null # project for new setup; inherited-user for an existing global copy.
+    project_enabled: null
+    user_enabled_before: null
+    user_enabled_after: null
     location: null
     ownership: harness
-    update_policy: platform-managed
+    update_policy: null # Record pinned upstream revision or native update policy.
     usage_instruction: null # Fill from the resolved skill rule after discovery.
     state: requested
     last_successful_stage: null
@@ -31,7 +35,7 @@ components:
       context: null
       capability: null
       evidence: []
-    next_action: Confirm scope and install or discover the required foundation.
+    next_action: Verify native installation and explicitly enable the same plugin ID for this project, preserving existing global choices.
     failure: null
     files: []
 instruction_files: []
