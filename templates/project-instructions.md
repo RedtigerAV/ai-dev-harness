@@ -1,6 +1,17 @@
 <!-- AI DEV HARNESS:BEGIN -->
 ## AI DEV HARNESS
 
+For ordinary project work, follow the applicable project instructions and use the
+skills and integrations relevant to the task. Consult the guides in the AI Dev
+Harness source repository only when the task concerns AI Dev Harness itself.
+
+- To install AI Dev Harness, start with [INSTALL.md](https://github.com/RedtigerAV/ai-dev-harness/blob/main/INSTALL.md).
+- To update or repair AI Dev Harness, or add or remove its skills or MCP
+  integrations, start with [LIFECYCLE.md](https://github.com/RedtigerAV/ai-dev-harness/blob/main/LIFECYCLE.md).
+- To verify or troubleshoot an AI Dev Harness installation, start with [VERIFY.md](https://github.com/RedtigerAV/ai-dev-harness/blob/main/VERIFY.md).
+
+Follow only the references needed for the requested operation.
+
 Source: {{harness_source_url}} at {{harness_revision}}.
 Project choices and observations: `.ai-dev-harness/installation.yaml`.
 
@@ -24,10 +35,8 @@ Project choices and observations: `.ai-dev-harness/installation.yaml`.
 {{selected_mcp_instances_with_states_purpose_and_project_scopes}}
 
 {{pending_selected_components_and_next_actions}}
-{{project_paths_technologies_and_version_sources}}
 
-Install/add/update guidance: {{harness_source_url}} (INSTALL.md, LIFECYCLE.md,
-VERIFY.md). Harness lifecycle tasks check only the AI environment; project tests,
+Harness lifecycle tasks check only the AI environment; project tests,
 builds, scans and application startup require a separate explicit request.
 Preserve surrounding project instructions. Global changes need explicit
 consent. Existing team conventions and normal platform permissions still apply.
@@ -38,6 +47,8 @@ consent. Existing team conventions and normal platform permissions still apply.
 Template rendering notes (do not copy these notes into the target):
 
 - Replace all tokens with observations; omit inapplicable optional content.
+- If using a different harness source, point the three guide links directly to its
+  guide files using URLs or paths that resolve from the target instruction file.
 - Include **one concise rule per available selected skill or collection member**:
   `actual-skill-name — purpose. Use when <task/context>; scope: <project paths>;
   do not use for <meaningful exclusion, if any>.` Reuse `usage.instruction`, confirm
@@ -48,5 +59,4 @@ Template rendering notes (do not copy these notes into the target):
   imports. Do not create a second block if both clients share that source.
 - Label pending skills and configured/unavailable MCPs accurately. Only available
   skills receive active usage instructions. Never advertise the entire catalog.
-- Keep the project map brief; detailed version/evidence data belongs in the record.
 - The managed bytes run from the BEGIN marker through the END marker only.
