@@ -80,10 +80,15 @@ alone installed the package or silently switch to a manually copied skill collec
 ### Show every catalog option
 
 Show the required foundation separately, with its observed state. Then present
-**every optional entry** from `registry/skills.yaml`, grouped into custom/personal
-skills and community skills/collections. Include every custom skill regardless of
-the detected technology or whether the user mentioned its task context. Read the
-catalog dynamically; do not maintain a name-specific shortlist in the installer.
+**every optional skill** from `registry/skills.yaml`, grouped into custom/personal
+skills, standalone community skills, and named collections. Include every custom
+skill regardless of the detected technology or task. Read the catalog dynamically.
+
+Label each collection as a collection and show its individual members before asking
+the user to choose. Read the current upstream listing and each member's `SKILL.md`
+metadata at the resolved revision. Show each member's actual name and a short,
+useful description under its collection heading. If a collection cannot be read,
+show it as unavailable with the reason and continue offering the other options.
 
 For both empty and existing projects, show the full list immediately. Recommendations
 affect ordering and labels, never visibility. Keep unrelated, already installed,
@@ -91,43 +96,41 @@ previously declined or currently incompatible options visible with their status;
 explain limitations instead of silently omitting them. In an empty project the user
 can choose a future stack or defer tools. Do not create a starter app.
 
-Use one bullet per entry, not one paragraph summarizing several components:
+Use one bullet per selectable skill, including each collection member:
 
 - **{name}** (recommended) — {purpose and when it helps, in one or two sentences}.
-  ID: `{catalog-id}`. Applies to: {app paths/task context}.
+  ID: `{catalog-id}` or `{catalog-id}/{member-name}`. Applies to: {app paths/task context}.
   Source: {upstream URL}. Status: {observed state}.
   {Important installation, compatibility or scope caveat, if any}.
 
 Put the exact marker `(recommended)` next to the name only when supported by
 project evidence or the user's stated needs. Explain the reason briefly. Leave
 other options unmarked; a recommendation does not select or authorize installation.
-Keep names and IDs stable between the displayed list and the selection panel.
 
 ### Collect multiple selections
 
-Open a **native multi-select panel containing all optional skills**, with one
-individually selectable option per catalog entry. Include names, useful descriptions
-and the same `(recommended)` labels. Use the active client's supported multi-select
-interface; the installing agent determines how to invoke it. Do not replace this
-with three single-choice bundles such as recommended/all/skip, or limit the panel
-to recommended entries. Let the user select several components or none.
+Ask for a text reply with one or more skill IDs or unambiguous names, separated by
+commas or newlines. Accept `none` or an equivalent reply to skip optional skills.
+For example, `nodejs-backend-patterns, addy-osmani-agent-skills/code-review-and-quality`
+selects two skills. A collection name alone calls for a choice of members from that
+collection. Clarify only unknown or ambiguous choices and keep the valid selections.
 
-For a selected collection, enumerate its current member names/descriptions and use
-multi-select to choose individual members. Selecting a collection opens member
-selection; it is not permission to install every member. Check supporting resources
-before selecting isolated collection skills.
+After resolving the skill selection, display **every entry** from `registry/mcp.yaml`
+with the same bullet format, statuses and recommendation labels. Explain important
+authentication, runtime and scope requirements. Collect MCP choices in a separate
+text reply using the same format.
 
-After obtaining the skill selection, display **every entry** from `registry/mcp.yaml`
-with the same bullet format, statuses and recommendation labels. Open a separate
-native multi-select panel containing all MCP options. Explain important authentication,
-runtime and scope requirements before selection. Do not hide an integration merely
-because it is not recommended for the detected stack.
+Text replies are the default in both clients. A native panel is optional when the
+current client and mode support multiple selections and can show the full set of
+individual options for that group. Accept text choices in either case.
 
 Honor explicit choices already made; do not reopen selection for an already approved
 scope. Present one concise preview: selected components, target files, scopes,
 prerequisites, and manual actions. If that exact scope was already approved, proceed
-without another confirmation. Keep global changes separate; declining them must not
-cancel unrelated local work. Install only the selected optional components.
+without another confirmation. For collection members, check required resources and
+setup effects, and include them in the preview. Keep global changes separate;
+declining them must not cancel unrelated local work. Install only the selected
+optional components. Record collection choices by `catalog-id/member-name`.
 
 ## 5. Install the agreed components
 
@@ -165,8 +168,10 @@ useful settings; never silently enable experiments or bypass permissions.
 ## 6. Merge project instructions safely
 
 Render [the instruction template](templates/project-instructions.md) from actual
-observations, per platform, following [skill routing](docs/skill-usage.md). For **every
-available selected skill**, custom or community, include its real invocation name,
+observations, per platform, following [skill routing](docs/skill-usage.md). Include
+its **Engineering Quality** section for ordinary development and review in each
+effective managed instruction source. For **every available selected skill**,
+custom or community, include its real invocation name,
 brief purpose, when to use it, meaningful exclusions and relevant project paths.
 Use the catalog's `usage.instruction` as the concise starting point and confirm it
 against the installed skill's description. For collection members, derive a specific

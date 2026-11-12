@@ -144,6 +144,28 @@ components:
     caveats: A successful CLI scan does not prove skill discovery. Do not install CI or autofix app code during setup. Upstream documents telemetry and its opt-out.
     verify: Confirm native skill discovery and executable availability using a supported help/version command. Do not run a diagnostic scan of the target project during installation.
 
+  # Node.js Backend Patterns upstream checked on 2026-11-12.
+  - id: nodejs-backend-patterns
+    usage:
+      role: domain
+      contexts: ["nodejs", "express", "fastify", "backend"]
+      when: ["Designing, implementing or reviewing Express or Fastify services, API boundaries, middleware, validation, error handling or persistence."]
+      when_not: ["Frontend-only work, Node.js used only for build tooling, or framework-specific work outside Express and Fastify."]
+      instruction: "Use nodejs-backend-patterns for Express or Fastify backend design, implementation and review. Adapt the examples to the project's installed versions, architecture and task scope."
+    name: Node.js Backend Patterns
+    kind: community-skill
+    required: false
+    description: Node.js backend patterns for Express and Fastify, including API boundaries, middleware, validation, error handling and persistence.
+    recommend_for: [express, fastify]
+    source: https://github.com/wshobson/agents
+    documentation: https://github.com/wshobson/agents/tree/main/plugins/javascript-typescript/skills/nodejs-backend-patterns
+    install:
+      method: selected-upstream-skill
+      member_hint: nodejs-backend-patterns
+      selection: Install only the named skill from the upstream JavaScript/TypeScript plugin for the selected client at project scope. Keep its complete directory and upstream license notice.
+    caveats: Keep references/details.md with SKILL.md. Match examples to the project's Node.js and framework versions and use the simplest architecture that fits. Installation requires no application dependency changes.
+    verify: Confirm native discovery and that references/details.md resolves. Ask for a no-write proposal for validation and error handling in a hypothetical route using the matching framework.
+
   - id: ui-ux-pro-max
     usage:
       role: domain
@@ -179,7 +201,7 @@ components:
     source: https://github.com/mattpocock/skills
     install:
       method: selected-upstream-skill
-      selection: List current members and descriptions, obtain a specific subset, and review any required setup effects before installation.
+      selection: Show all current members and descriptions before selection, collect individual member IDs or names, and review required setup effects before installation.
     caveats: Review required setup effects and resource dependencies for each selected member before installation.
     verify: Verify each selected member by actual name and required resources; a collection is not one installed skill.
 
@@ -198,6 +220,6 @@ components:
     source: https://github.com/addyosmani/agent-skills
     install:
       method: selected-upstream-skill
-      selection: List current members and their descriptions; obtain a specific subset relevant to the requested tasks.
+      selection: Show all current members and descriptions before selection and collect individual member IDs or names.
     caveats: Some members need shared checklists outside their directory. Resolve required resources and notices before copying.
     verify: Check discovery of every selected member and every referenced shared resource; use a no-write probe suited to its own documented purpose.

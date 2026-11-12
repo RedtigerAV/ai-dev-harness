@@ -26,6 +26,21 @@ Project choices and observations: `.ai-dev-harness/installation.yaml`.
   delegated work. Keep tasks proportionate where the active process permits it.
   These rules guide invocation subject to native platform behavior.
 
+### Engineering Quality
+
+- Write readable, maintainable code that can evolve and handle the expected workload.
+- Follow established architectural boundaries and reuse patterns that fit the task.
+  When conventions are missing or unclear, define the responsibilities and dependency
+  direction of the affected code before implementing substantial changes.
+- Use clear names, straightforward control flow, focused modules, and explicit
+  dependencies. Keep business rules independent of transport and storage where
+  that makes the rules easier to change and test.
+- Choose the simplest design that meets current requirements. Add layers, interfaces,
+  and abstractions only when they solve a concrete problem in scope.
+- During review, check the diff for mixed responsibilities, duplicated business
+  rules, unnecessary indirection, and changes to public contracts. Fix issues
+  introduced by the change.
+
 ### Installed skills: when to use them
 
 {{available_installed_skill_rules_with_real_names_purposes_triggers_and_project_scopes}}

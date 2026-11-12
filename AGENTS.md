@@ -17,7 +17,8 @@ requirements are in `docs/product-requirements.md`.
 - At component selection, display every custom/community skill and every MCP option
   as individual bullets with names and useful descriptions. Mark recommendations
   with `(recommended)` beside the name; recommendations never filter the catalog.
-  Use separate native multi-select panels for skills and MCP, each with all options.
+  List individual collection members before selection. Accept separate text replies
+  for skills and MCP, with any number of choices or `none` for each group.
 - Maintain catalogs against primary upstream documentation, including selection,
   compatibility, scope, task-time usage rules, and a meaningful verification probe.
 - Render a concise usage rule for every available installed skill into the managed

@@ -35,9 +35,9 @@ existing globally enabled copy stays enabled. See the
 [foundation setup guide](docs/superpowers.md) for new-install scope and verification.
 
 Every project gets the full skills catalog, including all custom/personal skills,
-then the full MCP catalog: individual bullets with names, useful descriptions and
-`(recommended)` beside matching options. Choose several items in separate native
-multi-select panels for skills and MCP. Recommendations never hide other options.
+then the full MCP catalog. Each skill, collection member, and MCP option gets its own
+bullet with a name, useful description, and `(recommended)` if it matches the project.
+Reply separately for skills and MCP with names or IDs separated by commas, or `none`.
 An empty project can defer technology choices. In a mixed repository, the agent
 inspects relevant applications, services, libraries and their versions, configures
 shared guidance once, and associates tools with their scopes.
@@ -46,7 +46,7 @@ Installing the harness does not upgrade dependencies or reorganize the project.
 ## Choose your tools
 
 These are catalog entries, **not a claim that they are installed**. All except
-Superpowers are optional. Collections are selected one skill at a time.
+Superpowers are optional. Choose any combination of individual collection members.
 
 | Skill or collection | Use it for |
 | --- | --- |
@@ -57,9 +57,10 @@ Superpowers are optional. Collections are selected one skill at a time.
 | React Best Practices | React and Next.js engineering and performance |
 | Vercel Composition Patterns | Reusable React component APIs |
 | React Doctor | React diagnostics, with a separate tool/skill installation |
+| Node.js Backend Patterns | Backend architecture, APIs, and error handling with Express or Fastify |
 | UI UX PRO MAX | Visual design and interface quality |
-| Matt Pocock Skills | Selected engineering, testing, planning, and teaching guidance |
-| Addy Osmani Agent Skills | Selected architecture, review, security, and quality guidance |
+| Matt Pocock Skills (collection) | Selected engineering, testing, planning, and teaching guidance |
+| Addy Osmani Agent Skills (collection) | Selected architecture, review, security, and quality guidance |
 
 | MCP integration | Use it for |
 | --- | --- |
@@ -88,6 +89,9 @@ Each installed skill gets a short **when to use it** rule in the managed section
 and project context. Community skills and MCP integrations apply independently of
 whether Superpowers is used. Selection for installation (`recommend_for`) and
 selection during work (`usage`) are separate; see [skill routing](docs/skill-usage.md).
+
+The same managed section includes **Engineering Quality** rules for implementation
+and review, including how to establish boundaries in projects without existing conventions.
 
 ```text
 Fix this typo. Do not use Superpowers or browser tools for this task.

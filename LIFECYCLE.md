@@ -26,9 +26,9 @@ observations rather than assuming a fresh installation.
 
 1. Consult the current catalog and re-detect relevant apps, including new manifests.
 2. When the user needs help choosing additions, follow INSTALL.md's full-catalog
-   presentation and native multi-select procedure: every custom/community skill,
-   then every MCP option, with individual descriptions and `(recommended)` labels.
-   Show existing/declined states; relevant absent options may appear first.
+   presentation and text selection: every custom/community skill and collection
+   member, then every MCP option, with individual descriptions and `(recommended)`
+   labels. Show existing/declined states; relevant absent options may appear first.
 3. Obtain the additional selection. A named-component request may already supply it;
    do not reopen the catalog selection unnecessarily. Clarify only its scope,
    ambiguous collection members, or unresolved conflicts.
@@ -64,10 +64,10 @@ the actual native install; do not repair it merely by adding another enabled fla
    choices, including inherited global enablement. Recheck user/project values after
    native updates; do not silently change activation for other projects.
 6. Recheck usage rules against each updated skill's own description. Preview and
-   merge the resulting rules with the managed instruction blocks using INSTALL.md's
-   marker/conflict rules. Preserve unrelated settings, authentication references,
-   and unknown record fields. If a component has disappeared upstream, report it;
-   do not remove it silently.
+   merge the resulting rules and any instruction-template changes, including
+   Engineering Quality, using INSTALL.md's marker/conflict rules. Preserve unrelated
+   settings, authentication references, and unknown record fields. If a component has
+   disappeared upstream, report it; do not remove it silently.
 7. Verify and save actual per-component revisions/states. A partially failed update
    must keep old versions for unchanged components and distinguish applied changes
    from the intended target revision. Report **partially installed** where appropriate.

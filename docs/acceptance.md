@@ -25,8 +25,8 @@ secrets. These checks do not prove agent behavior or service readiness.
 | Instruction conflicts | CRLF file, team text, malformed/duplicate markers, locally edited managed block | Non-harness bytes preserved; ambiguous markers and local modifications cause a merge proposal, not deletion. |
 | Both clients | Existing CLAUDE.md imports AGENTS.md; select both clients | Avoids duplicate effective block; copies skill to native directories; separate readiness observations. |
 | Complete selection | Existing project with two matching domain skills; no learning request | Shows every custom skill, including learning-dev-workflow, and every community/MCP entry as separate bullets with names, useful descriptions and statuses; recommendation labels never filter options. |
-| Native multi-select | Choose multiple skills and multiple MCP integrations | Separate native multi-select panels contain all optional skills and all MCP options, with matching names/descriptions/recommendation labels; no three-bundle single-choice substitute. |
-| Optional selection | Decline design/browser tools; choose one collection member | Allows multiple selections or none; collection selection opens member choice; installs only selected members/resources, without a full collection, deployment workflow or runtime dependency upgrade. |
+| Text selection | Choose multiple skills and multiple MCP integrations | Separate text replies accept several names or IDs, or `none`, after showing the complete list for each group with descriptions and recommendation labels. |
+| Optional selection | Decline design/browser tools; choose one collection member | Shows the collection's individual members and descriptions before selection. Installs only the chosen member and its approved required resources. |
 | Add later | A new technology/project and previously declined matching tools; request one member | Installs only the requested addition, renders its usage rule, and preserves other versions/choices. |
 | Update | Old source revisions, locally edited skill, native plugin updates | Compares actual versions; preview and approval; preserves customizations; records applied/retained revisions if partial. |
 | Legacy record | Only `.ai-harness/installation.yaml`, with comments, unknown fields and prior choices/history | Authorized migration creates `.ai-dev-harness/installation.yaml` from identical bytes and retains a recoverable backup; updates only owned references/hashes; removes the old record after checks, without reinstalling tools. |
@@ -72,7 +72,7 @@ healthy connector's installation failed.
   and exclusion of the domain skill itself; do not force irrelevant activation.
 - In a disposable source fixture, add a second custom skill with a different name
   and a supporting resource, plus its catalog path/usage. Confirm it appears in
-  the full skill list and multi-select panel even for an unrelated project context.
+  the full skill list and is selectable by text even for an unrelated project context.
   Confirm the generic setup instructions cover copying, resource checks, discovery
   and rendering a rule without installer/template edits for that name.
 - Reuse an existing globally enabled Superpowers plugin: user enablement stays true,

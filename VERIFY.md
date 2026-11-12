@@ -92,7 +92,8 @@ success. `ready` is scoped to the verified capability, client, and app, not fore
    Follow [skill routing](docs/skill-usage.md); record unperformed behavioral checks.
 5. **Instructions:** ensure one valid managed block per effective instruction source,
    correct component names/states, and unchanged non-harness bytes compared with the
-   saved before-image. Check nested overrides/imports from the actual app context.
+   saved before-image. Check the Engineering Quality section if the applied template
+   revision includes it. Check nested overrides/imports from the actual app context.
 6. **Record:** validate YAML, unique instance identities, revisions, ownership,
    selections, paths, states, and evidence. After an authorized legacy migration,
    check preserved source bytes/backup, reference updates, unchanged unrelated
